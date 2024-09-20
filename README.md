@@ -10,6 +10,13 @@ A comprehensive LaTeX template for preparing responses to reviewers' comments du
 - **External Quotes**: Use the `externalquote` environment to include quotes from external sources with optional author attribution.
 - **Annotations**: Custom commands for highlighting important notes and tracking pending changes.
 
+## Dependencies
+
+This template uses the *libertine* font. On Ubuntu, you may need to install it through the command:
+```bash
+sudo apt install texlive-fonts-extra
+```
+
 ## Getting Started
 
 1. Clone the repository:
@@ -24,9 +31,9 @@ A comprehensive LaTeX template for preparing responses to reviewers' comments du
 
 3. Open the `response-template.tex` file in your preferred LaTeX editor.
 
-4. Compile the document using `pdflatex`:
+4. Compile the document using `pdflatex`. The pdf file and auxiliary files will be generated in the `output` folder:
    ```bash
-   pdflatex response-template.tex
+   pdflatex --output-directory=output/ answer.tex
    ```
 
 ## Documentation
