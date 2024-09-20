@@ -12,19 +12,6 @@ A comprehensive LaTeX template for preparing responses to reviewers' comments du
 
 ## Getting Started
 
-To use this template, clone the repository and include the provided LaTeX file in your project. You can customize the appearance by adjusting the color definitions and environment settings in the preamble.
-
-### Prerequisites
-
-- LaTeX distribution (e.g., TeX Live, MikTeX)
-- Compatible LaTeX editor (e.g., Overleaf, TeXShop, Texmaker)
-
-### Compilation
-
-The template is designed to be compiled using `pdflatex`. This ensures that all features, including custom fonts and special characters, are properly supported.
-
-### Installation
-
 1. Clone the repository:
    ```bash
    git clone https://github.com/[your-username]/response-to-reviewers-template.git
@@ -42,60 +29,9 @@ The template is designed to be compiled using `pdflatex`. This ensures that all 
    pdflatex response-template.tex
    ```
 
-## Usage
+## Documentation
 
-### Including Reviewer Comments
-
-Use the `revquote` environment to include reviewer comments in shaded boxes:
-
-```latex
-\begin{revquote}
-[Insert reviewer comment here.]
-\end{revquote}
-```
-
-### Quoting Excerpts from Your Manuscript
-
-Use the `quotepaper` environment to quote excerpts from your own paper, either the old or revised version:
-
-```latex
-\begin{quotepaper}
-[Insert excerpt from your paper here.]
-\end{quotepaper}
-```
-
-### Including External Quotes
-
-Use the `externalquote` environment to include quotes from external sources with optional alignment and author attribution:
-
-```latex
-\begin{externalquote}[c]{Author Name}
-[Insert external quote here.]
-\end{externalquote}
-```
-
-### Adding Annotations
-
-Use the provided custom commands to add annotations and alerts within your document:
-
-- Highlight important notes or alerts:
-  ```latex
-  \alert{This is an important note.}
-  ```
-
-- Insert a reminder to verify section or reference numbers:
-  ```latex
-  As mentioned in Section~\qo\ref{sec:method}, we have updated the algorithm.
-  ```
-
-- Indicate a promised change that has not yet been implemented:
-  ```latex
-  We will update the figure in the next revision.\io
-  ```
-
-## Customization
-
-You can customize the appearance of the template by modifying the color definitions and environment settings in the preamble. For example, to change the background color of the `revquote` environment, adjust the `colback` parameter in its definition.
+For detailed usage instructions and examples, please refer to the [DOCUMENTATION.md](DOCUMENTATION.md) file.
 
 ## License
 
