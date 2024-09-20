@@ -181,6 +181,25 @@
   \end{tcolorbox}
 }
 
+% Environment for unnumbered reviewer quotes
+\newenvironment{revquote*}{%
+  \begin{tcolorbox}[
+    enhanced, 
+    breakable, 
+    colback=dgrey!5!white, 
+    colframe=dgrey!75!black,
+    boxrule=0.5pt,
+    arc=0.5mm, % Rounded corners
+    left=1mm,
+    right=1mm,
+    top=1mm,
+    bottom=1mm
+    ]
+  \ttfamily\small
+}{%
+  \end{tcolorbox}
+}
+
 % Custom colors for annotation environments
 \definecolor{lavenderblush}{rgb}{1.0, 0.97, 0.99}
 \definecolor{lavenderdark}{rgb}{0.45, 0.35, 0.48}
@@ -247,16 +266,16 @@ Thank you sincerely for your insightful comments. They have been instrumental in
 \section{Response to the Associate Editor}
 
 \subsection{General Report}
-\begin{revquote} \label{sec:ae-response}
+\begin{revquote*} \label{sec:ae-response}
 [Insert the associate editor's general report here.]
-\end{revquote}
+\end{revquote*}
 
 We thank you for this report. We find all the reviewers' and the editor's comments and suggestions very useful and have addressed them thoroughly.
 
 \subsection{Specific Issues}
-\begin{revquote}
+\begin{revquote*}
 [Insert specific issues raised by the associate editor here.]
-\end{revquote}
+\end{revquote*}
 
 Thank you for outlining these specific issues. We have addressed them as follows:
 
