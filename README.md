@@ -31,9 +31,9 @@ sudo apt install texlive-fonts-extra
 
 3. Open the `response-template.tex` file in your preferred LaTeX editor.
 
-4. Compile the document using `pdflatex`:
+4. Compile the document using `pdflatex`. The pdf file and auxiliary files will be generated in the `output` folder:
    ```bash
-   pdflatex response-template.tex
+   pdflatex --output-directory=output/ answer.tex
    ```
 
 ## Documentation
