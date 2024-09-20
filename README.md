@@ -31,7 +31,7 @@ A comprehensive LaTeX template for preparing responses to reviewers' comments du
 
 ## Documentation
 
-For detailed usage instructions and examples, please refer to the [DOCUMENTATION.md](DOCUMENTATION.md) file.
+For detailed usage instructions and examples, please refer to the [Documentation.md](Documentation.md) file.
 
 ## License
 
