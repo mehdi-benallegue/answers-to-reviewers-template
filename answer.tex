@@ -1,0 +1,344 @@
+% LaTeX Template for Responses to Reviewers
+% BSD 3-Clause License
+% Author: Mehdi Benallegue
+% CNRS AIST JOINT ROBOTICS LABORATORY
+
+% BSD 3-Clause License
+% 
+% Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+% 
+% 1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+% 
+% 2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+% 
+% 3. Neither the name of Mehdi Benallegue nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+% 
+% THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+\documentclass{article}
+
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\geometry{verbose}
+\usepackage{color}
+\usepackage{verbatim}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+
+\usepackage[unicode=true, bookmarks=false, breaklinks=false, pdfborder={0 0 1}, backref=section, colorlinks=true]{hyperref}
+\hypersetup{
+    pdftitle={Response to reviewers},
+    pdfauthor={[Corresponding author]},
+    unicode=false,
+    pdftoolbar=true,
+    pdfmenubar=true,
+    pdffitwindow=false,
+    pdfstartview={FitH},
+    pdfnewwindow=true,
+    linkcolor=blue,
+    citecolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+    linktoc=all
+}
+
+\usepackage{a4wide}
+
+\usepackage{tipa}
+\usepackage{bm}
+\usepackage{array}
+\usepackage{cprotect}
+\usepackage{varioref}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{svg}
+\usepackage{lipsum}
+
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\usepackage{cuted}
+\setlength{\stripsep}{3pt plus 1pt minus 1pt}
+
+\usepackage{pdfpages}
+\usepackage[most]{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+
+\usepackage{ifxetex}
+\usepackage{ifluatex}
+\usepackage{etoolbox}
+\usepackage{framed}
+
+% Conditional setup for XeTeX or LuaTeX
+\newif\ifxetexorluatex
+\ifxetex
+  \xetexorluatextrue
+\else
+  \ifluatex
+    \xetexorluatextrue
+  \else
+    \xetexorluatexfalse
+  \fi
+\fi
+
+\ifxetexorluatex
+  \usepackage{fontspec}
+  \newfontfamily\quotefont{Linux Libertine O}
+\else
+  \usepackage{libertine} % Use Linux Libertine font if available
+  \newcommand*{\quotefont}{\fontfamily{LinuxLibertineT-LF}\selectfont}
+\fi
+
+% Define custom quote commands
+\newcommand*{\quotesize}{60}
+\newcommand*{\openquote}{%
+  \tikz[remember picture,overlay,xshift=-4ex,yshift=-2.5ex]%
+    \node (OQ) {\quotefont\fontsize{\quotesize}{\quotesize}\selectfont``};%
+  \kern0pt%
+}
+\newcommand*{\closequote}[1]{%
+  \tikz[remember picture,overlay,xshift=4ex,yshift={#1}]%
+    \node (CQ) {\quotefont\fontsize{\quotesize}{\quotesize}\selectfont''};%
+}
+
+% Custom colors
+\definecolor{lyello}{rgb}{1,1,0.2}
+\definecolor{dred}{rgb}{0.8,0,0}
+\definecolor{dgrey}{rgb}{0.2,0.2,0.2}
+\definecolor{dgreen}{rgb}{0.0,0.8,0.0}
+
+% New colors for externalquote
+\definecolor{lavender}{rgb}{0.9, 0.88, 0.98} % Light lavender for a soft look
+\definecolor{softgreen}{rgb}{0.92, 0.96, 0.92} % Light green for background to complement lavender
+\definecolor{darkgreen}{rgb}{0.0, 0.20, 0.0} % Darker green for text
+
+% Background color for externalquote
+\colorlet{shadecolor}{softgreen}
+
+% Commands for aligning author names in quotes
+\newcommand*{\authoralign}[1]{%
+  \if#1l
+    \def\authorfill{}\def\quotefill{\hfill}
+  \else
+    \if#1r
+      \def\authorfill{\hfill}\def\quotefill{}
+    \else
+      \if#1c
+        \gdef\authorfill{\hfill}\def\quotefill{\hfill}
+      \else\typeout{Invalid option}
+      \fi
+    \fi
+  \fi}
+
+\newcommand*{\shadedauthorformat}{\emph}
+
+% Environment for external quotes with optional author alignment
+% Used to quote excerpts of other sources than the reviewers' comments and the paper itself
+
+\newenvironment{externalquote}[2][l]{\authoralign{#1}
+\ifstrempty{#2}
+   {\def\externalquoteauthor{}\def\yshift{-2ex}\def\quotefill{\hfill}}
+   {\def\externalquoteauthor{\color{darkgreen}\par\authorfill\shadedauthorformat{#2}}\def\yshift{2ex}}
+\begin{tcolorbox}[
+  enhanced,
+  breakable,
+  colback=softgreen, % Light green background
+  colframe=darkgreen, % No frame, same as background
+  boxrule=0.5pt,
+  arc=0.5mm, % Rounded corners
+  left=1mm,
+  right=1mm,
+  top=1mm,
+  bottom=1mm
+  ]
+\begin{quote}\color{darkgreen}\openquote}{\externalquoteauthor\quotefill\closequote{0}\end{quote}\end{tcolorbox}}
+
+% Environment for reviewer quotes
+\newenvironment{revquote}{%
+  \begin{tcolorbox}[
+    enhanced, 
+    breakable, 
+    colback=dgrey!5!white, 
+    colframe=dgrey!75!black,
+    boxrule=0.5pt,
+    arc=0.5mm, % Rounded corners
+    left=1mm,
+    right=1mm,
+    top=1mm,
+    bottom=1mm
+    ]
+  \ttfamily\small
+}{%
+  \end{tcolorbox}
+}
+
+% Custom colors for annotation environments
+\definecolor{lavenderblush}{rgb}{1.0, 0.97, 0.99}
+\definecolor{lavenderdark}{rgb}{0.45, 0.35, 0.48}
+\definecolor{lavenderdarker}{rgb}{0.30, 0.20, 0.30}
+
+% Environment for quoting the paper
+% Used to cite the old or revised version of the paper
+\newenvironment{quotepaper}{
+  \begin{tcolorbox}[
+    enhanced, 
+    breakable, 
+    colback=lavenderblush, 
+    colframe=lavenderdark,
+    boxrule=0.5pt,       
+    arc=0.5mm,           % Smaller rounded corners
+    left=2mm,            
+    right=2mm,           
+    top=2mm,             
+    bottom=2mm           
+    ]
+    \color{lavenderdarker}\small
+}{
+  \end{tcolorbox}
+}
+
+\def\labelitemi{-}
+
+\usepackage{soul}
+
+% Highlight color
+\sethlcolor{lyello}
+
+% Alert command
+\newcommand{\alert}[1]{\textcolor{dred}{\hl{\textbf{#1}}}} % Command for alert text with highlighting and bold
+\newcommand{\emphfix}[1]{\textbf{{#1}}} % Command for emphasized bold text
+
+% \io comes from the Latin 'interjectio', used to mark changes that have been announced to the reviewers but are not yet implemented in the paper. This command should be removed once the change is made.
+\newcommand{\io}{\alert{/!\textbackslash}}
+
+% \qo comes from Latin 'questio', used when referring to a section or reference number that may have changed after revision. It's a reminder to check the number before finalizing the document.
+\newcommand{\qo}{\alert{(?) }}
+
+% Custom commands for annotations
+\newcommand{\Mehdi}[1]{\alert{/Mehdi\textbackslash}{\hl{ #1}}}
+\newcommand{\ToBeDone}{\alert{/To be done\textbackslash}}
+\newcommand{\MehdiOK}{{\hl{$\text{\checkmark}_{\text{Mehdi}}$}}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\title{Author's Response and Summary of Submission Update}
+\author{[Corresponding author], on behalf of the authors}
+
+\maketitle
+\tableofcontents{}
+
+\section{Introduction}
+
+Dear editors and reviewers,
+
+Thank you sincerely for your insightful comments. They have been instrumental in enhancing our paper, which we believe has significantly improved. Below, you will find a summary of the key amendments we made. This is accompanied by detailed responses to each review and suggestion, presented with the original comments in shaded boxes, followed by our corresponding answers. Additionally, we have included a diff file to illustrate the specific changes implemented in this revision.
+
+\section{Response to the Associate Editor}
+
+\subsection{General Report}
+\begin{revquote} \label{sec:ae-response}
+[Insert the associate editor's general report here.]
+\end{revquote}
+
+We thank you for this report. We find all the reviewers' and the editor's comments and suggestions very useful and have addressed them thoroughly.
+
+\subsection{Specific Issues}
+\begin{revquote}
+[Insert specific issues raised by the associate editor here.]
+\end{revquote}
+
+Thank you for outlining these specific issues. We have addressed them as follows:
+
+\subsubsection{Issue one}
+[Provide your response here.]
+
+\subsubsection{Issue two}
+[Provide your response here.]
+
+\section{Response to Reviewers}
+
+\subsection{Reviewer \#1}
+
+\subsubsection{Overall Review}
+
+\begin{revquote}
+[Insert Reviewer \#1's overall review here.]
+\end{revquote}
+
+We thank you for your thoughtful review. We have addressed your concerns as detailed below.
+
+\subsubsection{Issue 1}
+\begin{revquote}
+[Insert specific comment from Reviewer \#1 here.]
+\end{revquote}
+
+[Provide your response here.]
+
+For example, we have updated Section~II (?) to include the requested information.\io
+
+% Explanation of \qo and \io usage:
+% The \qo command is used here to indicate that the section number may have changed during revision, and we need to verify it before final submission.
+% The \io command indicates that we have announced a change to the reviewers, but it has not yet been implemented in the paper. This should be removed once the change is made.
+
+\subsubsection{Issue 2}
+\begin{revquote}
+[Insert specific comment from Reviewer \#1 here.]
+\end{revquote}
+
+[Provide your response here.]
+
+As mentioned in the original manuscript:
+
+\begin{quotepaper}
+Future work will focus on improving the robot's autonomy.
+\end{quotepaper}
+
+% Explanation:
+% The 'quotepaper' environment is used to cite the old or revised version of the paper.
+
+In their seminal work, Smith and Jones stated:
+
+\begin{externalquote}[c]{Smith and Jones}
+Artificial intelligence is the new electricity, revolutionizing industries, transforming economies, and shaping the future of human progress.
+\end{externalquote}
+
+% Explanation:
+% The 'externalquote' environment is used to quote excerpts from other sources than the reviewers' comments and the paper itself.
+% It now uses all the fields:
+% 1. The text is aligned to the center (c).
+% 2. The author's name "Smith and Jones" is attributed and aligned based on the specified alignment.
+% 3. The text is enclosed in custom opening and closing quotes and rounded corners are used for the shaded box.
+
+% Continue with other comments and responses...
+
+\subsection{Reviewer \#2}
+
+% Repeat the structure for other reviewers
+
+\subsection{Reviewer \#3}
+
+% ...
+
+\section{Detailed Tracking of Modifications}
+
+% The following lines are optional. Uncomment them if you need to include a diff file.
+Attached to this response is a copy of our paper with tracked modifications between the previous submission and the updated version. Please be aware that this comparison is automatically generated by {\bf latexdiff} and that some glitches and aberrations may appear.
+
+Yours Faithfully,
+
+[Corresponding author], on behalf of the authors.
+
+% The following lines are optional. Uncomment them if you need to include the bibliography or a diff file.
+% \bibliographystyle{unsrt}
+% % \bibliography{references}
+% % \includepdf[pages=-]{diff-revision-1.pdf}
+
+\vfill
+
+\end{document}
