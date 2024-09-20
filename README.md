@@ -10,6 +10,13 @@ A comprehensive LaTeX template for preparing responses to reviewers' comments du
 - **External Quotes**: Use the `externalquote` environment to include quotes from external sources with optional author attribution.
 - **Annotations**: Custom commands for highlighting important notes and tracking pending changes.
 
+## Dependencies
+
+This template uses the *libertine* font. On Ubuntu, you may need to install it through the command:
+```bash
+sudo apt install texlive-fonts-extra
+```
+
 ## Getting Started
 
 1. Clone the repository:
