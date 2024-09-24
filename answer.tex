@@ -157,9 +157,34 @@
   ]
 \begin{quote}\color{darkgreen}\openquote}{\externalquoteauthor\quotefill\closequote{0}\end{quote}\end{tcolorbox}}
 
+% Create a new counter for the reviewer quotes
+\newcounter{revquotecounter}
+\newcommand{\resetrevquotecounter}{\setcounter{revquotecounter}{0}}
 % Environment for reviewer quotes
 \newenvironment{revquote}{%
+	\refstepcounter{revquotecounter}% Increment the quotes counter
   \begin{tcolorbox}[
+    title= Comment \therevquotecounter,
+    enhanced, 
+    breakable, 
+    colback=dgrey!5!white, 
+    colframe=dgrey!75!black,
+    boxrule=0.5pt,
+    arc=0.5mm, % Rounded corners
+    left=1mm,
+    right=1mm,
+    top=1mm,
+    bottom=1mm
+    ]
+  \ttfamily\small
+}{%
+  \end{tcolorbox}
+}
+
+% Environment for unnumbered reviewer quotes
+\newenvironment{revquote*}[1][]{%
+  \begin{tcolorbox}[
+    title= #1, % The title is optional
     enhanced, 
     breakable, 
     colback=dgrey!5!white, 
@@ -242,16 +267,16 @@ Thank you sincerely for your insightful comments. They have been instrumental in
 \section{Response to the Associate Editor}
 
 \subsection{General Report}
-\begin{revquote} \label{sec:ae-response}
+\begin{revquote*} \label{sec:ae-response}
 [Insert the associate editor's general report here.]
-\end{revquote}
+\end{revquote*}
 
 We thank you for this report. We find all the reviewers' and the editor's comments and suggestions very useful and have addressed them thoroughly.
 
 \subsection{Specific Issues}
-\begin{revquote}
+\begin{revquote*}
 [Insert specific issues raised by the associate editor here.]
-\end{revquote}
+\end{revquote*}
 
 Thank you for outlining these specific issues. We have addressed them as follows:
 
@@ -318,8 +343,13 @@ Artificial intelligence is the new electricity, revolutionizing industries, tran
 % Continue with other comments and responses...
 
 \subsection{Reviewer \#2}
+% One can reset the counter for the reviewer quotes with the command \resetrevquotecounter
+\resetrevquotecounter
 
-% Repeat the structure for other reviewers
+\subsubsection{Issue 1}
+\begin{revquote}
+[Insert specific comment from Reviewer \#2 here.]
+\end{revquote}
 
 \subsection{Reviewer \#3}
 
