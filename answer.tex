@@ -182,8 +182,9 @@
 }
 
 % Environment for unnumbered reviewer quotes
-\newenvironment{revquote*}{%
+\newenvironment{revquote*}[1][]{%
   \begin{tcolorbox}[
+    title= #1, % The title is optional
     enhanced, 
     breakable, 
     colback=dgrey!5!white, 
